@@ -1,7 +1,7 @@
 (function(win,doc){
     'use strict';
 
-    doc.querySelector('#country').addEventListener('change',async(event)=>{
+    doc.querySelector('.btn').addEventListener('click',async(event)=>{
         event.preventDefault();
         let req=await fetch('http://127.0.0.1:8000/countryFilter/',{
             method:'POST',
@@ -11,7 +11,8 @@
                 'X-CSRFToken':doc.querySelectorAll('input')[0].value
             },
             body:JSON.stringify({
-                'country':doc.querySelector('#country').value
+                'country':doc.querySelector('#country').value,
+                'title':doc.querySelector('#title').value
             })
         });
         let res=await req.json();
