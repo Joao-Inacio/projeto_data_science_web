@@ -1,7 +1,7 @@
 # import numpy as np
 import json
 import pandas as pd
-from django.http import JsonResponse
+from django.http import HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render
 
 df = pd.read_csv(r'app\static\data\netflix_titles.csv')
@@ -20,9 +20,6 @@ def home(request):
 
 
 # Requisição para filtro de país
-from django.http import JsonResponse, HttpResponseBadRequest
-
-
 def countryFilter(request):
     if request.body:
         field = json.loads(request.body.decode('utf-8'))
