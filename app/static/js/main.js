@@ -17,6 +17,13 @@
         });
         let res=await req.json();
         doc.querySelector('.result').innerHTML=res.data;
-    },false);
+
+        let graph = doc.querySelector('.graph');
+        Plotly.newPlot( graph, [{
+            x: res.graph.x,
+            y: res.graph.y,
+            type:'bar'
+            }] );
+        },false);
 
 })(window,document);
